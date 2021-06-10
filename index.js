@@ -28,8 +28,8 @@ const sendSMS = async (message) => {
         message: MessageTemplate,
         numbers: ['9074982388']
       }
-      const response = await fast2sms.sendMessage(options)
-      console.log(response)
+      // const response = await fast2sms.sendMessage(options)
+      // console.log(response)
       console.log('ALERT SENDED')
     }
   } catch (err) {
@@ -50,6 +50,8 @@ let slotFinder = async () => {
         block.block_name === 'Cheruvannur CHC' ||
         block.block_name === 'Olavanna CHC'
     )
+    blockFilter[1]['sessions'][0]['available_capacity'] = 270
+    blockFilter[1]['sessions'][0]['available_capacity_dose1'] = 270
     blockFilter.forEach((element) => {
       element['sessions'].forEach((item) => {
         let objMainData = {
@@ -93,12 +95,12 @@ let slotFinder = async () => {
         }
       })
     })
-
     let messageToUser = arrMainData.filter(
       (doc) =>
         doc['availableCapacity'] !== 0 || doc['availableCapacityDose1'] === true
     )
     if (messageToUser[0]) {
+      console.log(messageToUser)
       console.log('FIND VACCINATION SLOTS')
       await sendSMS(messageToUser)
     }
@@ -107,9 +109,9 @@ let slotFinder = async () => {
   }
 }
 
-var minutes = 5,
+var minutes = 1,
   the_interval = minutes * 60 * 1000
 console.log('EXECUTION STARTED')
 setInterval(function () {
   slotFinder()
-}, 5000)
+}, the_interval)
