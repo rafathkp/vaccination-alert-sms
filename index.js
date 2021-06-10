@@ -28,8 +28,8 @@ const sendSMS = async (message) => {
         message: MessageTemplate,
         numbers: ['9074982388']
       }
-      // const response = await fast2sms.sendMessage(options)
-      // console.log(response)
+      const response = await fast2sms.sendMessage(options)
+      console.log(response)
       console.log('ALERT SENDED')
     }
   } catch (err) {
@@ -50,8 +50,8 @@ let slotFinder = async () => {
         block.block_name === 'Cheruvannur CHC' ||
         block.block_name === 'Olavanna CHC'
     )
-    blockFilter[1]['sessions'][0]['available_capacity'] = 270
-    blockFilter[1]['sessions'][0]['available_capacity_dose1'] = 270
+    blockFilter[3]['sessions'][1]['available_capacity'] = 270
+    blockFilter[3]['sessions'][1]['available_capacity_dose1'] = 270
     blockFilter.forEach((element) => {
       element['sessions'].forEach((item) => {
         let objMainData = {
@@ -95,6 +95,8 @@ let slotFinder = async () => {
         }
       })
     })
+
+    console.log(arrMainData)
     let messageToUser = arrMainData.filter(
       (doc) =>
         doc['availableCapacity'] !== 0 || doc['availableCapacityDose1'] === true
