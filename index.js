@@ -50,8 +50,8 @@ let slotFinder = async () => {
         block.block_name === 'Cheruvannur CHC' ||
         block.block_name === 'Olavanna CHC'
     )
-    blockFilter[3]['sessions'][1]['available_capacity'] = 270
-    blockFilter[3]['sessions'][1]['available_capacity_dose1'] = 270
+    // blockFilter[3]['sessions'][1]['available_capacity'] = 270
+    // blockFilter[3]['sessions'][1]['available_capacity_dose1'] = 270
     blockFilter.forEach((element) => {
       element['sessions'].forEach((item) => {
         let objMainData = {
@@ -111,7 +111,7 @@ let slotFinder = async () => {
   }
 }
 
-var minutes = 1,
+var minutes = 5,
   the_interval = minutes * 60 * 1000
 console.log('EXECUTION STARTED')
 setInterval(function () {
