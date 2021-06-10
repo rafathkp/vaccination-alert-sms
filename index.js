@@ -95,8 +95,6 @@ let slotFinder = async () => {
         }
       })
     })
-
-    console.log(arrMainData)
     let messageToUser = arrMainData.filter(
       (doc) =>
         doc['availableCapacity'] !== 0 || doc['availableCapacityDose1'] === true
